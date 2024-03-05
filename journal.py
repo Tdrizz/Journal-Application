@@ -19,10 +19,11 @@ for _ in range(programs):
         total += len(filename.readlines())
 
 # Opens journal.txt and writes input into the file with current date stamp
-myWrap = 
+myWrap = textwrap
 with open("journal.txt", "a") as totalLines:
     totalLines.write(f"Today is {today}\n\n")
-    totalLines.write(f"Material Covered: {materialCovered}\n\n")
+    totalLines.write(totalLines.fill(f"Material Covered: {materialCovered}\n\n"))
+    totalLines.write("\n\n")
     totalLines.write(f"How I'm Feeling: {feelingDaily}\n\n")
     totalLines.write(f"Lines/Program(s) Written: {total} lines and {programs} program(s)\n\n")
 
