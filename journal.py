@@ -2,7 +2,7 @@
 from datetime import date
 import textwrap
 
-# Gets current date and stores it in variable
+# Gets current date and stores it in today variable
 today = date.today()
 
 # Gets material covered from user
@@ -13,8 +13,10 @@ print()
 feelingDaily = input("How are you feeling today: ")
 print()
 
-# Loops through files and reads number of lines from each program and holds in total variable.
+# Gets number of programs written today 
 programs = int(input("Number of programs written today: "))
+
+# Loops through each program and reads total number of lines from each file, keeping track of the sum in a total variable
 total = 0
 for _ in range(programs):
     filename = input("File Name: ")
@@ -25,10 +27,12 @@ for _ in range(programs):
 myWrap = textwrap.TextWrapper(width = 100)
 with open("journal.txt", "a") as totalLines:
     totalLines.write(f"Today is {today}\n\n")
-    totalLines.write(myWrap.fill(f"Material Covered: {materialCovered}\n\n"))
+    totalLines.write(myWrap.fill(f"Material Covered: {materialCovered}"))
     totalLines.write("\n\n")
     totalLines.write(f"How I'm Feeling: {feelingDaily}\n\n")
     totalLines.write(f"Lines/Program(s) Written: {total} lines and {programs} program(s)\n\n")
+    totalLines.write("------------------\n\n")
 
-print("\n")
+print()
 print("Entry Saved to journal.txt")
+print()
