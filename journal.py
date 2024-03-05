@@ -9,22 +9,24 @@ today = date.today()
 materialCovered = input("Material Covered: ")
 print()
 
-# Gets daily feeling from user
+# Gets daily reflection from user
 feelingDaily = input("How are you feeling today: ")
 print()
 
 # Gets number of programs written today 
 programs = int(input("Number of programs written today: "))
 
-# Loops through each program and reads total number of lines from each file, keeping track of the sum in a total variable
+# Loops through each program file and reads total number of lines from each file, keeping track of the sum in a total variable
 total = 0
 for _ in range(programs):
     filename = input("File Name: ")
     with open(filename) as filename:
         total += len(filename.readlines())
 
-# Opens journal.txt and writes input into the file with current date stamp
+# Wraps text after 100 characters 
 myWrap = textwrap.TextWrapper(width = 100)
+
+# Opens journal.txt and appends the data from the user to the file according the formatting rules.  
 with open("journal.txt", "a") as totalLines:
     totalLines.write(f"Today is {today}\n\n")
     totalLines.write(myWrap.fill(f"Material Covered: {materialCovered}"))
