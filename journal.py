@@ -19,6 +19,7 @@ for _ in range(programs):
         total += len(filename.readlines())
 
 # Opens journal.txt and writes input into the file with current date stamp
+myWrap = 
 with open("journal.txt", "a") as totalLines:
     totalLines.write(f"Today is {today}\n\n")
     totalLines.write(f"Material Covered: {materialCovered}\n\n")
