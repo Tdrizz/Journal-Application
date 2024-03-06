@@ -31,7 +31,8 @@ with open("journal.txt", "a") as totalLines:
     totalLines.write(f"Today is {today}\n\n")
     totalLines.write(myWrap.fill(f"Material Covered: {materialCovered}"))
     totalLines.write("\n\n")
-    totalLines.write(myWrap.fill(f"How I'm Feeling: {feelingDaily}\n\n"))
+    totalLines.write(myWrap.fill(f"How I'm Feeling: {feelingDaily}"))
+    totalLines.write("\n\n")
     totalLines.write(f"Lines/Program(s) Written: {total} lines and {programs} program(s)\n\n")
     totalLines.write("------------------\n\n")
 
