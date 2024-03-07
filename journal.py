@@ -1,5 +1,4 @@
-# Reads number of lines from each file and returns total number of lines and program written with current date in journal.txt file.
-import sys
+# Reads number of lines from each file and returns total number of lines and program written with current date in lineswritten.txt file.
 from datetime import date
 import textwrap
 
@@ -47,12 +46,8 @@ def main():
     total = 0
     for _ in range(programs):
         filename = input("File Name: ")
-        try:
-            with open(filename) as filename:
-                total += len(filename.readlines())
-        except FileNotFoundError:
-            print("Could not open file)
-
+        with open(filename) as filename:
+            total += len(filename.readlines())
 
     # Wraps text after 100 characters
     myWrap = textwrap.TextWrapper(width = 100)
