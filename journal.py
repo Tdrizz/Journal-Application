@@ -1,4 +1,4 @@
-# Reads number of lines from each file and returns total number of lines and program written with current date in lineswritten.txt file.
+# Reads number of lines from each file and returns total number of lines and program written with current date in journal.txt file.
 import sys
 from datetime import date
 import textwrap
