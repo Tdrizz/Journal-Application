@@ -28,39 +28,43 @@ def get_programs() -> int:
             pass
 
 # Gets current date and stores it in today variable
-today = date.today()
+def main():
+    today = date.today()
 
-# Gets material covered from user
-materialCovered = get_material()
+    # Gets material covered from user
+    materialCovered = get_material()
 
 
-# Gets daily reflection from user
-feelingDaily = get_feeling()
-print()
+    # Gets daily reflection from user
+    feelingDaily = get_feeling()
+    print()
 
-# Gets number of programs written today 
-programs = get_programs()
+    # Gets number of programs written today 
+    programs = get_programs()
 
-# Loops through each program file and reads total number of lines from each file, keeping track of the sum in a total variable
-total = 0
-for _ in range(programs):
-    filename = input("File Name: ")
-    with open(filename) as filename:
-        total += len(filename.readlines())
+    # Loops through each program file and reads total number of lines from each file, keeping track of the sum in a total variable
+    total = 0
+    for _ in range(programs):
+        filename = input("File Name: ")
+        with open(filename) as filename:
+            total += len(filename.readlines())
 
-# Wraps text after 100 characters 
-myWrap = textwrap.TextWrapper(width = 100)
+    # Wraps text after 100 characters 
+    myWrap = textwrap.TextWrapper(width = 100)
 
-# Opens journal.txt and appends the data from the user to the file according the formatting rules.  
-with open("journal.txt", "a") as totalLines:
-    totalLines.write(f"Today is {today}\n\n")
-    totalLines.write(myWrap.fill(f"Material Covered: {materialCovered}"))
-    totalLines.write("\n\n")
-    totalLines.write(myWrap.fill(f"How I'm Feeling: {feelingDaily}"))
-    totalLines.write("\n\n")
-    totalLines.write(f"Lines/Program(s) Written: {total} lines and {programs} program(s)\n\n")
-    totalLines.write("------------------\n\n")
+    # Opens journal.txt and appends the data from the user to the file according the formatting rules.  
+    with open("journal.txt", "a") as totalLines:
+        totalLines.write(f"Today is {today}\n\n")
+        totalLines.write(myWrap.fill(f"Material Covered: {materialCovered}"))
+        totalLines.write("\n\n")
+        totalLines.write(myWrap.fill(f"How I'm Feeling: {feelingDaily}"))
+        totalLines.write("\n\n")
+        totalLines.write(f"Lines/Program(s) Written: {total} lines and {programs} program(s)\n\n")
+        totalLines.write("------------------\n\n")
 
-print()
-print("Entry Saved to journal.txt")
-print()
+    print()
+    print("Entry Saved to journal.txt")
+    print()
+
+if __name__ == "__main__":
+    main()
