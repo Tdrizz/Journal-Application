@@ -2,19 +2,44 @@
 from datetime import date
 import textwrap
 
+def get_material() -> str:
+    while True:
+        materialCovered = input("Material Covered: ")
+        if len(materialCovered) == 0:
+            continue
+        return materialCovered
+
+def get_feeling() -> str:
+    while True:
+        feelingDaily = input("How are you feeling today: ")
+        if len(feelingDaily) == 0:
+            continue
+        return feelingDaily
+
+def get_programs() -> int:
+    while True:
+        programs = input("Number of programs written today: ")
+        try:
+            programs = int(programs)
+            if programs < 0:
+                raise ValueError
+            return programs
+        except ValueError:
+            pass
+
 # Gets current date and stores it in today variable
 today = date.today()
 
 # Gets material covered from user
-materialCovered = input("Material Covered: ")
-print()
+materialCovered = get_material()
+
 
 # Gets daily reflection from user
-feelingDaily = input("How are you feeling today: ")
+feelingDaily = get_feeling()
 print()
 
 # Gets number of programs written today 
-programs = int(input("Number of programs written today: "))
+programs = get_programs()
 
 # Loops through each program file and reads total number of lines from each file, keeping track of the sum in a total variable
 total = 0
