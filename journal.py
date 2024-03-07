@@ -46,13 +46,16 @@ def main():
     # Loops through each program file and reads total number of lines from each file, keeping track of the sum in a total variable
     total = 0
     for _ in range(programs):
-        filename = input("File Name: ")
-        try:
-            with open(filename) as filename:
-                total += len(filename.readlines())
-        except FileNotFoundError:
-            print("File not found")
-            sys.exit()
+        while True:
+            filename = input("File Name: ")
+            try:
+                with open(filename) as filename:
+                    total += len(filename.readlines())
+            except FileNotFoundError:
+                print("File not found")
+                continue
+            else:
+                break
 
     # Wraps text after 100 characters
     myWrap = textwrap.TextWrapper(width = 100)
