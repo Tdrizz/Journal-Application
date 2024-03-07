@@ -2,33 +2,69 @@
 from datetime import date
 import textwrap
 
-# Gets current date and stores it in variable
-today = date.today()
+def get_material() -> str:
+    while True:
+        materialCovered = input("Material Covered: ")
+        if len(materialCovered) == 0:
+            continue
+        return materialCovered
 
-# Gets material covered from user
-materialCovered = input("Material Covered: ")
-print()
+def get_feeling() -> str:
+    while True:
+        feelingDaily = input("How are you feeling today: ")
+        if len(feelingDaily) == 0:
+            continue
+        return feelingDaily
 
-# Gets daily feeling from user
-feelingDaily = input("How are you feeling today: ")
-print()
+def get_programs() -> int:
+    while True:
+        programs = input("Number of programs written today: ")
+        try:
+            programs = int(programs)
+            if programs < 0:
+                raise ValueError
+            return programs
+        except ValueError:
+            pass
 
-# Loops through files and reads number of lines from each program and holds in total variable.
-programs = int(input("Number of programs written today: "))
-total = 0
-for _ in range(programs):
-    filename = input("File Name: ")
-    with open(filename) as filename:
-        total += len(filename.readlines())
+# Gets current date and stores it in today variable
+def main():
+    today = date.today()
 
-# Opens journal.txt and writes input into the file with current date stamp
-myWrap = textwrap.TextWrapper(width = 100)
-with open("journal.txt", "a") as totalLines:
-    totalLines.write(f"Today is {today}\n\n")
-    totalLines.write(myWrap.fill(f"Material Covered: {materialCovered}\n\n"))
-    totalLines.write("\n\n")
-    totalLines.write(f"How I'm Feeling: {feelingDaily}\n\n")
-    totalLines.write(f"Lines/Program(s) Written: {total} lines and {programs} program(s)\n\n")
+    # Gets material covered from user
+    materialCovered = get_material()
 
-print("\n")
-print("Entry Saved to journal.txt")
+
+    # Gets daily reflection from user
+    feelingDaily = get_feeling()
+    print()
+
+    # Gets number of programs written today
+    programs = get_programs()
+
+    # Loops through each program file and reads total number of lines from each file, keeping track of the sum in a total variable
+    total = 0
+    for _ in range(programs):
+        filename = input("File Name: ")
+        with open(filename) as filename:
+            total += len(filename.readlines())
+
+    # Wraps text after 100 characters
+    myWrap = textwrap.TextWrapper(width = 100)
+
+    # Opens journal.txt and appends the data from the user to the file according the formatting rules.
+    with open("journal.txt", "a") as totalLines:
+        totalLines.write(f"Today is {today}\n\n")
+        totalLines.write(myWrap.fill(f"Material Covered: {materialCovered}"))
+        totalLines.write("\n\n")
+        totalLines.write(myWrap.fill(f"How I'm Feeling: {feelingDaily}"))
+        totalLines.write("\n\n")
+        totalLines.write(f"Lines/Program(s) Written: {total} lines and {programs} program(s)\n\n")
+        totalLines.write("------------------\n\n")
+
+    print()
+    print("Entry Saved to journal.txt")
+    print()
+
+if __name__ == "__main__":
+    main()
