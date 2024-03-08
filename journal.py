@@ -3,32 +3,6 @@ import sys
 from datetime import date
 import textwrap
 
-def get_material() -> str:
-    while True:
-        materialCovered = input("Material Covered: ")
-        if len(materialCovered) == 0:
-            continue
-        return materialCovered
-
-def get_feeling() -> str:
-    while True:
-        feelingDaily = input("How are you feeling today: ")
-        if len(feelingDaily) == 0:
-            continue
-        return feelingDaily
-
-def get_programs() -> int:
-    while True:
-        programs = input("Number of programs written today: ")
-        try:
-            programs = int(programs)
-            if programs < 0:
-                raise ValueError
-            return programs
-        except ValueError:
-            pass
-
-# Gets current date and stores it in today variable
 def main():
     today = date.today()
 
@@ -73,6 +47,31 @@ def main():
     print()
     print("Entry Saved to journal.txt")
     print()
+    
+def get_material() -> str:
+    while True:
+        materialCovered = input("Material Covered: ")
+        if len(materialCovered) == 0:
+            continue
+        return materialCovered
+
+def get_feeling() -> str:
+    while True:
+        feelingDaily = input("How are you feeling today: ")
+        if len(feelingDaily) == 0:
+            continue
+        return feelingDaily
+
+def get_programs() -> int:
+    while True:
+        programs = input("Number of programs written today: ")
+        try:
+            programs = int(programs)
+            if programs < 0:
+                raise ValueError
+            return programs
+        except ValueError:
+            pass
 
 if __name__ == "__main__":
     main()
