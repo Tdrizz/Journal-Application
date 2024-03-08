@@ -1,4 +1,4 @@
-# Reads number of lines from each file and returns total number of lines and program written with current date in journal.txt file.
+# Journal application that stores material covered, daily reflections, and number of programs and lines written in journal.txt. 
 import sys
 from datetime import date
 import textwrap
@@ -47,7 +47,7 @@ def main():
     print()
     print("Entry Saved to journal.txt")
     print()
-    
+
 def get_material() -> str:
     while True:
         materialCovered = input("Material Covered: ")
