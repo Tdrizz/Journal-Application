@@ -30,8 +30,7 @@ This Python program helps you keep track of your daily progress by recording the
 
 ## Files
 
-1. `lineswritten.txt`: Contains the total number of lines written in the code files.
-2. `journal.txt`: Journal file where your daily entries are stored.
+1. `journal.txt`: Journal file where your daily entries are stored.
 
 ## Date Stamp
 
