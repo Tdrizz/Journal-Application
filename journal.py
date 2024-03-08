@@ -8,7 +8,7 @@ def main():
 
     # Gets material covered from user
     materialCovered = get_material()
-
+    print()
 
     # Gets daily reflection from user
     feelingDaily = get_feeling()
