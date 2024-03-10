@@ -1,10 +1,26 @@
 # Journal application that stores material covered, daily reflections, and number of programs and lines written in journal.txt. 
-import sys
-from datetime import date
+import datetime
 import textwrap
 
 def main():
-    today = date.today()
+    # Gets the current date and current day of the week.
+    today_date = date.today()
+    week_day = today_date.weekday()
+    match week_day:
+        case 0:
+            week_day = "Monday"
+        case 1:
+            week_day = "Tuesday"
+        case 2:
+            week_day = "Wednesday"
+        case 3:
+            week_day = "Thursday"
+        case 4:
+            week_day = "Friday"
+        case 5:
+            week_day = "Saturday"
+        case 6:
+            week_day = "Sunday"
 
     # Gets material covered from user
     materialCovered = get_material()
@@ -36,7 +52,7 @@ def main():
 
     # Opens journal.txt and appends the data from the user to the file according the formatting rules.
     with open("journal.txt", "a") as totalLines:
-        totalLines.write(f"Today is {today}\n\n")
+        totalLines.write(f"Today is {week_day} {today_date}\n\n")
         totalLines.write(myWrap.fill(f"Material Covered: {materialCovered}"))
         totalLines.write("\n\n")
         totalLines.write(myWrap.fill(f"How I'm Feeling: {feelingDaily}"))
